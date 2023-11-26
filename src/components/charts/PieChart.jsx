@@ -2,34 +2,37 @@ import React from "react";
 import { Chart } from "react-google-charts";
 
 export const data = [
-  ["Productos", "Precios"],
-  ["Leche", 40],
-  ["Pasta", 10],
-  ["Carne", 60],
-  ["Detergente", 15],
-  ["Cepillo", 5],
-  ["Nachos", 20],
-  ["Licuadora", 100],
-  ["Chocolate", 25],
-  ["Atun", 45],
-  ["Papel higienico", 80],
-
+  ["Provincia", "Poblacion"],
+  ["Argentina",2500]
+  ["Germany", 22250],
+  ["United States", 300020],
+  ["Brazil", 400225],
+  ["Canada", 500355],
+  ["France", 600522],
+  ["RU", 700225],
+  
 ];
 
-
-export const options = {
-  title: "Productos",
-  is3D: true,
-};
-
-export default function PieChart() {
+export default function GeoChart() {
   return (
     <Chart
-      chartType="PieChart"
+      chartEvents={[
+        {
+          eventName: "select",
+          callback: ({ chartWrapper }) => {
+            const chart = chartWrapper.getChart();
+            const selection = chart.getSelection();
+            if (selection.length === 0) return;
+            const region = data[selection[0].row + 1];
+            console.log("Selected : " + region);
+          },
+        },
+      ]}
+
+      chartType="GeoChart"
+      width="100%"
+      height="400px"
       data={data}
-      options={options}
-      width={"100%"}
-      height={"400px"}
     />
   );
 }

@@ -12,7 +12,7 @@ import CardContent from '@mui/material/CardContent';
 import BarChartCurso from '../charts/BarChartCurso';
 import PopulationChart from '../charts/PopulationChart';
 import  PieChart  from '../charts/PieChart';
-import GeoChart from '../charts/GeoChart';
+import GraficProductos from '../charts/GraficProductos';
 
 export default function Informe() {
 
@@ -53,7 +53,7 @@ export default function Informe() {
 
                                 <Card sx={{ minWidth: 60 + "%", height: 350 }} >
                                 <CardContent>
-                                        <GeoChart/>
+                                        <GraficProductos/>
                                     </CardContent>
                                 </Card>
                             </Stack>
